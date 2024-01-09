@@ -35,6 +35,10 @@
   list-style: none;
 }
 
+.nav_menu .logo img{
+  height: 60px;
+}
+
 .nav_menu li {
   padding: 0px 10px;
 }
@@ -66,10 +70,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url(./images/dillon-kydd-pvdx8c6Y5BY-unsplash.jpg);
+  background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.4)), url(./images/pexels-eziz-charyyev-1475938.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  flex-direction: column;
   color: white;
   height: 100vmin;
 }
@@ -120,7 +123,7 @@
 
 .featuredBox {
   width: 400px;
-  border: 1px solid #686767;
+  border: 1px solid #CED9E0;
 }
 
 .homeRow1 .featured img{
@@ -138,7 +141,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url(./images/dillon-kydd-pvdx8c6Y5BY-unsplash.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   flex-direction: column;
@@ -183,13 +185,45 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  border-top: 1px solid #686767;
+  border-top: 1px solid #CED9E0;
 }
 
+.homeRow2{
+  /* padding: 50px 0px; */
+  background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0.6)), url(./images/pexels-damien-daye-2381872.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 80vmin;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
 
+.homeRow2box{
+  width: 70%;
+  /* background-color: #4e4e4e67; */
+  padding: 20px 0px;
+}
 
+.homeRow2text{
+  padding: 30px;
+  background-color: #00AEFF;
+  text-align: center;
+  width: 500px;
+  /* height: 200px; */
+}
 
+.homeRow2text h1{
+  font-size: 70px;
+}
 
+.homeRow2text h2{
+  padding: 20px 0px;
+  font-size: 20px;
+}
 
 
 

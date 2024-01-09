@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-// import { BsBox2Heart, BsHouseHeart } from "react-icons/bs";
-// import { useContext } from "react";
+import logo from "../images/logo.png"
 import { DataContext } from "../contexts/DataContext";
 
 
@@ -12,7 +11,7 @@ function Navigation() {
         <ul className="nav_menu">
           <li className="logo">
             <Link to="/" className="nav-link">
-              <img src="" alt="PropertiesHub Logo" />
+              <img src={logo} alt="PropertiesHub Logo" />
             </Link>
           </li>
           <li>
