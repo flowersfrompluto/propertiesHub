@@ -165,7 +165,7 @@ function Home() {
           <div className="homeRow3Btn">
             <span>
               <Link to="/properties" className="nav-link">
-                <Button title="View Properties" btnBg="#00AEFF" btnColor="white"></Button>
+                <Button title="View Properties" btnBg="#00AEFF" btnColor="white" border="none"></Button>
               </Link>
             </span>
           </div>
@@ -181,7 +181,7 @@ function Home() {
                   <h3>$6789</h3>
                 </div>
                 <div>
-                  <Button title={<CiHeart />} btnBg="transparent" btnColor="#00AEFF"></Button>
+                  <Button title={<CiHeart />} btnBg="transparent" btnColor="#00AEFF" border="none"></Button>
                 </div>
               </div>
               <h2>Apartment</h2>
@@ -209,7 +209,7 @@ function Home() {
                   <h3>$6789</h3>
                 </div>
                 <div>
-                  <Button title={<CiHeart />} btnBg="transparent" btnColor="#00AEFF"></Button>
+                  <Button title={<CiHeart />} btnBg="transparent" btnColor="#00AEFF" border="none"></Button>
                 </div>
               </div>
               <h2>Apartment</h2>
@@ -237,7 +237,7 @@ function Home() {
                   <h3>$6789</h3>
                 </div>
                 <div>
-                  <Button title={<CiHeart />} btnBg="transparent" btnColor="#00AEFF"></Button>
+                  <Button title={<CiHeart />} btnBg="transparent" btnColor="#00AEFF" border="none"></Button>
                 </div>
               </div>
               <h2>Apartment</h2>

@@ -8,8 +8,9 @@ import HouseDetails from "./pages/HouseDetails";
 import Agents from "./pages/Agents";
 import AgentDetails from "./pages/AgentDetails";
 import Blog from "./pages/Blog";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
 import Account from "./pages/Account";
-import Wishlist from "./pages/Wishlist";
 import DataProvider from "./contexts/DataContext";
 
 
@@ -26,8 +27,9 @@ function App() {
           <Route path="/agents" element={<Agents />} />
           <Route path="/agents/details/:id" element={<AgentDetails />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/account" element={<Account />} />
-          <Route path="/wishlist" element={<Wishlist />} />
         </Routes>
         <Footer />
       </BrowserRouter>

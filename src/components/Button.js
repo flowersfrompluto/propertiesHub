@@ -1,10 +1,10 @@
-function Button({ title, btnBg, classN, btnColor, clickFunc }) {
+function Button({ title, btnBg, classN, btnColor, clickFunc, border }) {
   const btnStyle = {
     backgroundColor: btnBg,
     padding: "10px 25px",
     color: btnColor,
     fontSize: "20px",
-    border: "none",
+    border: border,
     borderRadius: "5px",
     textDecoration: "none",
     outline: "none",

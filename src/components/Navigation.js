@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import logo from "../images/logo.png"
-import { DataContext } from "../contexts/DataContext";
+import Button from "./Button";
 
 
 function Navigation() {
-  // const { cart } = useContext(DataContext);
   return (
     <nav className="flex nav">
       <div>
@@ -31,13 +30,8 @@ function Navigation() {
       <div>
         <ul className="nav_menu">
           <li>
-            <Link to="/wishlist" className="nav-link">Wishlist</Link>
-            {/* <Link to="/wishlist" className="nav-link">Wishlist <span><BsBox2Heart /></span></Link>
-            <Link to="/wishlist" className="nav-link">Wishlist <span><BsHouseHeart /></span></Link> */}
-          </li>
-          <li>
-            <Link to="/account" className="nav-link">
-              <button>Sign In</button>
+            <Link to="/signup" className="nav-link">
+              <Button title="Sign In" btnBg="#00AEFF" btnColor="white" classN="navSignIn" border="1px solid #00AEFF"></Button>
             </Link>
           </li>
         </ul>
