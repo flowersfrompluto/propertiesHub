@@ -22,6 +22,9 @@ function Navigation() {
           <li>
             <Link to="/agents" className="nav-link">Agents</Link>
           </li>
+          <li>
+            <Link to="/blog" className="nav-link">Blog</Link>
+          </li>
         </ul>
       </div>
       <div>

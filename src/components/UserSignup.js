@@ -70,13 +70,13 @@ function UserSignup() {
 
         <div className="form-group">
           <label className="balle">First Name</label>
-          <input className="b-one" type="text" placeholder="Enter First Name" value={uFname} onChange={(e) => setuFname(e.target.value)} />
+          <input className="b-one" maxlength="25" type="text" placeholder="Enter First Name" value={uFname} onChange={(e) => setuFname(e.target.value)} />
           {checkValue === true && uFname === "" ? <span>First Name Required</span> : null}
         </div>
 
         <div className="form-group">
           <label className="balle">Last Name</label>
-          <input className="b-one" type="text" placeholder="Enter Last Name" value={uLname} onChange={(e) => setuLname(e.target.value)} />
+          <input className="b-one" maxlength="25" type="text" placeholder="Enter Last Name" value={uLname} onChange={(e) => setuLname(e.target.value)} />
           {checkValue === true && uLname === "" ? <span>Last Name Required</span> : null}
         </div>
 
@@ -94,7 +94,7 @@ function UserSignup() {
 
         <div className="form-group">
           <label>Password</label>
-          <input className="b-twoo" placeholder="Password" type="password" value={uPassword} onChange={(e) => setuPassword(e.target.value)} />
+          <input className="b-one" placeholder="Password" type="password" value={uPassword} onChange={(e) => setuPassword(e.target.value)} />
           {checkValue === true && uPassword === "" ? <span>Password Required</span> : null}
         </div>
 

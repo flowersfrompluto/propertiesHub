@@ -43,7 +43,7 @@ function Login() {
 
         <div className="form-group">
           <label>Password</label>
-          <input className="b-two" placeholder="Enter Password" type="password" value={uPassword} onChange={(e) => setUpassword(e.target.value)} />
+          <input className="b-one" placeholder="Enter Password" type="password" value={uPassword} onChange={(e) => setUpassword(e.target.value)} />
           {checkValue === true && uPassword === "" ? <span>Password Required</span> : null}
         </div>
         <div className="checkbox-group">

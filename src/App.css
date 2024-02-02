@@ -9,6 +9,17 @@
 
 /* DEFAULT */
 
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 .flex {
   display: flex;
 }
@@ -37,7 +48,8 @@
   z-index: 99;
 }
 
-.navSignIn:hover {
+.navSignIn:hover,
+.blogLink:hover {
   background-color: transparent !important;
   color: #00AEFF !important;
 }
@@ -395,6 +407,11 @@
   color: #140c40;
 }
 
+.form-group span{
+  font-size: 12px;
+  color: #ff0000;
+}
+
 .b-one {
   height: 50px;
   width: 100%;
@@ -517,21 +534,9 @@
   width: 100%;
   margin-top: 10px;
   color: #140c40;
-}
-
-.b-two {
-  height: 50px;
-  width: 100%;
-  margin-top: 10px;
-  color: #140c40;
-}
-
-.b-twoo {
-  height: 50px;
-  width: 100%;
-  margin-top: 10px;
-  color: #140c40;
-  padding: 0 10px;
+  outline-style: none;
+  border-radius: 5px;
+  border: 1px solid gainsboro;
 }
 
 .checkbox-group {
@@ -564,101 +569,6 @@
   text-decoration: none;
   color: #00AEFF;
 }
-
-
-/* .signup-container {
-  background-image: url("./images/living-room-1835923_1920.jpg");
-  background-size: cover;
-  background-position: center;
-  padding: 80px 0px 50px 0px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
-.signup-form {
-  background-color: #fff;
-  padding: 50px;
-  width: 55%;
-  margin-top: 50px;
-}
-
-.h3d {
-  text-align: center;
-  font-size: xx-large;
-  color: #140c40;
-}
-
-.h3dd {
-  text-align: center;
-  margin-top: 20px;
-  color: #140c40;
-}
-
-.balley {
-  color: #140c40;
-}
-
-.form-group {
-  color: #140c40;
-  margin-top: 20px;
-  margin-bottom: 15px;
-}
-
-.b-one {
-  height: 50px;
-  width: 100%;
-  margin-top: 10px;
-  color: #140c40;
-}
-
-.b-two {
-  height: 50px;
-  width: 100%;
-  margin-top: 10px;
-  color: #140c40;
-}
-
-.b-twoo {
-  height: 50px;
-  width: 100%;
-  margin-top: 10px;
-  color: #140c40;
-  padding: 0 10px;
-}
-
-
-.checkbox-group {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: #140c40;
-}
-
-.forgot-password {
-  color: #00AEFF;
-  cursor: pointer;
-}
-
-.lower {
-  margin-top: 15px;
-  display: flex;
-  justify-content: space-between;
-  color: #140c40;
-}
-
-.dont {
-  font-size: 95%;
-  font-weight: 300;
-  padding-top: 20px;
-  color: #140c40;
-}
-
-.linker {
-  text-decoration: none;
-  color: #00AEFF;
-} */
 
 /* SINGLE PROPERTY */
 
@@ -1273,7 +1183,39 @@ footer .rights {
 }
 
 
+/* BLOG PAGE */
 
+.blog {
+  min-height: 100vmin;
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+  background: linear-gradient(rgba(255, 255, 255, 0.273), rgba(0, 0, 0, 0.8)), url("./images/best-coming-soon-page-examples_g.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
 
+.blogLink{
+    text-decoration: none;
+    color: white;
+}
 
+.comingSoon {
+  min-height: 75vmin;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 
+.comingSoon h1{
+  font-size: 60px;
+  padding: 10px 0px;
+}
+
+.comingSoon p{
+  padding: 10px 0px;
+}

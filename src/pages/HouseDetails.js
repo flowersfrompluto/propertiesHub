@@ -117,6 +117,13 @@ function HouseDetails() {
               </div>
             </div>
           </SwiperSlide>
+          <SwiperSlide className="single-p">
+            <div className="single_prop_img">
+              <div>
+                <img src={houseImg} alt="" />
+              </div>
+            </div>
+          </SwiperSlide>
         </Swiper>
       </div>
       <div class="text-center">

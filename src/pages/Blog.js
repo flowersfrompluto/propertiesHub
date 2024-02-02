@@ -1,44 +1,25 @@
-import { useEffect, useState } from "react";
-import Navigation from "../components/Navigation";
-import Footer from "../components/Footer";
+// import Navigation from "../components/Navigation";
+// import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
+import Button from "../components/Button";
 
 function Blog() {
-  const [posts, setPosts] = useState([]);
-  const [postMsg, setPostMsg] = useState("");
-
-  useEffect(() => {
-    const fetchData = () => {
-      setPostMsg("Please wait, Loading Data");
-
-      fetch("https://jsonplaceholder.typicode.com/posts")
-        .then((resp) => resp.json())
-        .then((data) => {
-          setPosts(data);
-          setPostMsg("");
-        })
-        .catch(() => {
-          setPostMsg("Network Error");
-        });
-    };
-    fetchData();
-  }, []);
 
   return (
     <div className="pages">
-      <Navigation/>
-      {posts.length !== 0 ? (
-        <div className="posts_grid">
-          {posts.map((post) => (
-            <div className="posts_content" key={post.id}>
-              <h4>{post.title}</h4>
-              <p>{post.body}</p>
-            </div>
-          ))}
+      {/* <Navigation /> */}
+      <div className="blog">
+        <div class="comingSoon">
+          <h1>Coming Soon...</h1>
+          <p>Go to Homepage</p>
+          <div class="info">
+            <Link to="/" className="blogLink">
+              <Button title="Home" btnBg="#00AEFF" btnColor="white" classN="navSignIn" border="1px solid #00AEFF"></Button>
+            </Link>
+          </div>
         </div>
-      ) : (
-        <div>{postMsg}</div>
-      )}
-      <Footer/>
+      </div>
+      {/* <Footer /> */}
     </div>
   );
 }

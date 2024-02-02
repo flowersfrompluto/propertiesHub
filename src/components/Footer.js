@@ -37,7 +37,7 @@ function Footer() {
                 <Link to="/agents" className="foot-link">Agent</Link>
               </li>
               <li>
-                Blog
+                <Link to="/blog" className="foot-link">Blog</Link>
               </li>
             </ul>
           </div>
