@@ -1,5 +1,8 @@
 import Button from "../components/Button";
 import { useState } from "react";
+import Navigation from "../components/Navigation";
+import Footer from "../components/Footer";
+
 function AgentDetails() {
   const [uFname, setUfname] = useState("");
   const [uLname, setUlname] = useState("");
@@ -57,6 +60,7 @@ function AgentDetails() {
 
   return (
     <div className="book_table">
+<Navigation/>
       <div className="book_table_header">
         <h2>Book a Table</h2>
         <p>Make a reservation to dine with us</p>
@@ -129,6 +133,7 @@ function AgentDetails() {
         </div>
         <Button title="Submit" btnBg="#6c6c6c" clickFunc={submitForm} />
       </form>
+      <Footer/>
     </div>
   );
 }

@@ -8,6 +8,8 @@ import house1 from "../images/home (1).jpg"
 import house2 from "../images/home (2).jpg"
 import house3 from "../images/home (3).jpg"
 import { CiHeart } from "react-icons/ci";
+import Navigation from "../components/Navigation";
+import Footer from "../components/Footer";
 
 function HousingPage() {
   // const [food, setFood] = useState([]);
@@ -27,6 +29,7 @@ function HousingPage() {
 
   return (
     <div>
+      <Navigation/>
       <div className="housing grid">
         <div className="housingBox">
           <Link to="/properties/details/:id">
@@ -365,6 +368,7 @@ function HousingPage() {
           )}
         </div>
       </div> */}
+      <Footer/>
     </div>
   );
 }

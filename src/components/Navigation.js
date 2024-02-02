@@ -22,15 +22,12 @@ function Navigation() {
           <li>
             <Link to="/agents" className="nav-link">Agents</Link>
           </li>
-          <li>
-            <Link to="/blog" className="nav-link">Blog</Link>
-          </li>
         </ul>
       </div>
       <div>
         <ul className="nav_menu">
           <li>
-            <Link to="/signup" className="nav-link">
+            <Link to="/login" className="nav-link">
               <Button title="Sign In" btnBg="#00AEFF" btnColor="white" classN="navSignIn" border="1px solid #00AEFF"></Button>
             </Link>
           </li>

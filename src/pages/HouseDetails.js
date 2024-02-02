@@ -1,6 +1,4 @@
-// import { useState, useEffect, useContext } from "react";
-// import { useParams } from "react-router-dom";
-// import { DataContext } from "../contexts/DataContext";
+import { useNavigate } from "react-router-dom"
 import Button from "../components/Button"
 import profile1 from "../images/img 3.jpg"
 import profile2 from "../images/img 2.jpg"
@@ -14,116 +12,112 @@ import { MdOutlineAttachEmail } from "react-icons/md";
 import { IoCallOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import React, { useState } from "react"
-
+import { Pagination, A11y, Autoplay, EffectFade } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/bundle';
+import Navigation from "../components/Navigation";
+import Footer from "../components/Footer";
 
 
 function HouseDetails() {
-  // const [food, setFood] = useState({});
-  // const { setCart, cart } = useContext(DataContext);
-  // const { id } = useParams();
-
-  // const handleAddToCart = (food) => {
-  //   const initialCart = [...cart];
-  //   const findFoodItem = initialCart.find((item) => item.id === food.id);
-
-  //   if (findFoodItem === undefined) {
-  //     const addAdditionalInfo = { ...food, quantity: 1, totalPrice: food.price };
-  //     initialCart.push(addAdditionalInfo);
-  //     setCart(initialCart);
-  //     localStorage.setItem("pandorasCart", JSON.stringify(initialCart));
-  //     alert("Item Added to Cart");
-  //   } else {
-  //     alert("Item already in cart");
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   const getFood = async () => {
-  //     try {
-  //       const resp = await fetch("https://adorable-bat-fatigues.cyclic.app/bbqs/" + id);
-  //       const data = await resp.json();
-  //       setFood(data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   getFood();
-  // }, [id]);
-
-  const [date, setDate] = useState("")
-  const [fullName, setFullName] = useState("")
-  const [subject, setSubject] = useState("")
-  const [message, setMessage] = useState("")
+  const navigate = useNavigate()
+  const [uDate, setDate] = useState("")
+  const [uTime, setUtime] = useState("")
+  const [uMessage, setUmessage] = useState("")
   const [checkValue, setCheckValue] = useState(false);
   const [toggle, setToggle] = useState(false)
   const loggedInUser = JSON.parse(sessionStorage.getItem("User"));
-
+  const today = new Date()
+  const todayDate = today.getTime()
 
   const sendBooking = async (e) => {
     e.preventDefault();
     if (loggedInUser === null) {
       alert("Please Login to your account to Book an appointment");
-    } else if (date === "" || fullName === "" || subject === "" || message === "") {
-      alert("All Field Required");
+      navigate("/login")
+    } else if (uMessage === "" || uTime === "") {
+      setCheckValue(true);
     }
-    // else {
-    //   let post_obj = {
-    //     user_id: loggedInUser.id,
-    //     username: loggedInUser.first_name + " " + loggedInUser.last_name,
-    //     title: title,
-    //     description: descrp,
-    //     img: imgUrl,
-    //     likes: 0,
-    //     dislikes: 0,
-    //     comments: [],
-    //     date_created: new Date().toLocaleString(),
-    //   };
-    //   const resp = await fetch("http://localhost:5000/feeds", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify(post_obj),
-    //   });
-    //   if (resp.ok) {
-    //     alert("Post Created Successfully");
-    //     setTitle("");
-    //     setDescrp("");
-    //     setImgUrl("");
-    //     const data = await resp.json();
-    //     props.setFeeds((prev) => [...prev, data]);
-    //   } else {
-    //     alert("There was a probem creating post");
-    //   }
-    // }
+    else {
+      const userDate = new Date(uDate).getTime()
+      // console.log(userDate)
+
+      if (todayDate <= userDate) {
+        let post_obj = {
+          property_id: loggedInUser.id,
+          user_id: loggedInUser.id,
+          date: uDate,
+          msg: uMessage,
+          time: uTime,
+        }
+        const resp = await fetch("http://property.reworkstaging.name.ng/v1/appointments", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(post_obj),
+        });
+        if (resp.ok) {
+          alert("Appointment Created Successfully");
+          setDate("");
+          setUtime("");
+          setUmessage("");
+        } else {
+          alert("There was a probem creating appointment!");
+        }
+      } else {
+        alert("Appointment Date is past, select a future date")
+      };
+    }
   };
 
   return (
     <div className="prop-cont">
+      <Navigation/>
       <div className="singlePTxt">
         <h1 className="hd">Properties Single</h1>
         <p className="lux">Luxurious home</p>
       </div>
-      <div className="single-p flex">
-        <div className="singlePthumbnail flex">
-          <div>
-            <img src={houseImg} alt="" />
-          </div>
-          <div>
-            <img src={houseImg} alt="" />
-          </div>
-          <div>
-            <img src={houseImg} alt="" />
-          </div>
-          <div>
-            <img src={houseImg} alt="" />
-          </div>
-          <div>
-            <img src={houseImg} alt="" />
-          </div>
-        </div>
-
-        <div className="singlePMain">
-          <img src={houseImg} alt="" />
-        </div>
+      <div className="mySlider">
+        <Swiper className="swiper"
+          modules={[Navigation, Pagination, EffectFade, A11y, Autoplay]}
+          spaceBetween={0}
+          slidesPerView={1}
+          navigation
+          autoplay={true}
+          effect-fade
+          pagination={{ clickable: true }}
+          onSwiper={(swiper) => console.log(swiper)}
+          onSlideChange={() => console.log('slide change')}
+        >
+          <SwiperSlide className="single-p">
+            <div className="single_prop_img">
+              <div>
+                <img src={houseImg} alt="" />
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide className="single-p">
+            <div className="single_prop_img">
+              <div>
+                <img src={houseImg} alt="" />
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide className="single-p">
+            <div className="single_prop_img">
+              <div>
+                <img src={houseImg} alt="" />
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide className="single-p">
+            <div className="single_prop_img">
+              <div>
+                <img src={houseImg} alt="" />
+              </div>
+            </div>
+          </SwiperSlide>
+        </Swiper>
       </div>
       <div class="text-center">
         <span className="subheading">Oakland</span>
@@ -222,6 +216,7 @@ function HouseDetails() {
             </div>
           </div>
         </div>
+        
         <div className="propRight">
           <div className="wsh-con">
             <div className="acc">
@@ -260,25 +255,23 @@ function HouseDetails() {
             {toggle && (
               <div className="form-container">
                 <form className="appointmentForm" >
+
                   <div className="app-group">
-                    <label className="form-label" htmlFor="date">Date:</label>
-                    <input className="form-input" type="date" name="date" placeholder="Enter Date" value={date} onChange={(e) => setDate(e.target.value)} />
-                    {checkValue === true && date === "" ? <span>Date Required</span> : null}
+                    <label className="form-label">Date:</label>
+                    <input className="form-input" type="date" placeholder="Enter Date" value={uDate} onChange={(e) => setDate(e.target.value)} />
+                    {checkValue === true && uDate === "" ? <span>Date Required</span> : null}
                   </div>
+
                   <div className="app-group">
-                    <label className="form-label" htmlFor="fullName">Full Name:</label>
-                    <input className="form-input" type="text" name="fullName" placeholder="Enter Full Name" value={fullName} onChange={(e) => setFullName(e.target.value)} />
-                    {checkValue === true && fullName === "" ? <span>Full Name Required</span> : null}
+                    <label className="form-label">Appointment Time:</label>
+                    <input className="form-input" type="time" placeholder="Enter Appointment Time" value={uTime} onChange={(e) => setUtime(e.target.value)} />
+                    {checkValue === true && uTime === "" ? <span>Time Required</span> : null}
                   </div>
-                  <div className="app-group">
-                    <label className="form-label" htmlFor="subject">Subject:</label>
-                    <input className="form-input" type="text" name="subject" placeholder="Enter Subject" value={subject} onChange={(e) => setSubject(e.target.value)} />
-                    {checkValue === true && subject === "" ? <span>Subject Required</span> : null}
-                  </div>
+
                   <div className="app-group">
                     <label className="form-label" htmlFor="message">Message:</label>
-                    <textarea className="form-textarea" placeholder="Enter Message" value={message} onChange={(e) => setMessage(e.target.value)} />
-                    {checkValue === true && message === "" ? <span>Message Required</span> : null}
+                    <textarea className="form-textarea" placeholder="Enter Message" value={uMessage} onChange={(e) => setUmessage(e.target.value)} />
+                    {checkValue === true && uMessage === "" ? <span>Message Required</span> : null}
                   </div>
                   <Button classN="form-submit" title="Book Appointment" btnBg="#00AEFF" btnColor="white" border="none" clickFunc={sendBooking}></Button>
                 </form>
@@ -287,9 +280,7 @@ function HouseDetails() {
           </div>
         </div>
       </div>
-      <div>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d8069790.435797271!2d8.677456999999999!3d9.0338725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sng!4v1705590766781!5m2!1sen!2sng" width="400" height="300"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
+      <Footer/>
     </div>
   );
 }

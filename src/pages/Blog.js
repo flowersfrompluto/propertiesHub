@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import Navigation from "../components/Navigation";
+import Footer from "../components/Footer";
+
 function Blog() {
   const [posts, setPosts] = useState([]);
   const [postMsg, setPostMsg] = useState("");
@@ -22,6 +25,7 @@ function Blog() {
 
   return (
     <div className="pages">
+      <Navigation/>
       {posts.length !== 0 ? (
         <div className="posts_grid">
           {posts.map((post) => (
@@ -34,6 +38,7 @@ function Blog() {
       ) : (
         <div>{postMsg}</div>
       )}
+      <Footer/>
     </div>
   );
 }

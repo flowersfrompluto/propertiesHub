@@ -8,12 +8,14 @@ import house1 from "../images/home (1).jpg"
 import house2 from "../images/home (2).jpg"
 import house3 from "../images/home (3).jpg"
 import { CiHeart } from "react-icons/ci";
-
+import Navigation from "../components/Navigation";
+import Footer from "../components/Footer";
 
 function Agents() {
   
   return (
     <div>
+      <Navigation/>
       <div className="agent grid">
         <div className="agentBox">
           <Link to="/agent/details/:id">
@@ -321,6 +323,7 @@ function Agents() {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

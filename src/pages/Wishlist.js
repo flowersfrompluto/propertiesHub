@@ -1,5 +1,7 @@
 import { useContext } from "react";
 import { DataContext } from "../contexts/DataContext";
+import Navigation from "../components/Navigation";
+import Footer from "../components/Footer";
 
 function Wishlist() {
   const { cart, setCart } = useContext(DataContext);
@@ -52,6 +54,7 @@ function Wishlist() {
 
   return (
     <div className="cartPage">
+      <Navigation/>
       {cart.length !== 0 ? (
         <div className="cart_itemContainer">
           {/* <h2>Total Price: ${sum()}</h2> */}
@@ -78,6 +81,7 @@ function Wishlist() {
       ) : (
         <h3>No Item In Cart</h3>
       )}
+      <Footer/>
     </div>
   );
 }
