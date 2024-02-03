@@ -12,54 +12,33 @@ function UserSignup() {
   const [checkValue, setCheckValue] = useState(false);
 
   const submitForm = async (e) => {
-    e.preventDefault();
-    if (uFname === "" || uLname === "" || uEmail === "" || uPhone === "" || uPassword === "") {
-      setCheckValue(true);
-    } else {
-      let user_obj = {
-        first_name: uFname,
-        last_name: uLname,
-        email: uEmail,
-        phone: uPhone,
-        password: uPassword,
-      };
-      const res = await fetch("http://property.reworkstaging.name.ng/v1/users");
-      const users = await res.json();
-      const checkUser = users.find((user) => user.phone === uPhone);
-
-      const checkIfUserExists = users.find((user) => user.email === uEmail);
-      
-      console.log(user_obj)
-      console.log(checkUser)
-      console.log(checkIfUserExists)
-
-      if (checkIfUserExists !== undefined) {
-        alert("Email already Registered, Login into your account with your email");
+    try {
+      e.preventDefault();
+      if (uFname === "" || uLname === "" || uEmail === "" || uPhone === "" || uPassword === "") {
+        setCheckValue(true);
       } else {
-        const registerUser = await fetch("http://property.reworkstaging.name.ng/v1/users",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "authorization": "bearer <token>"
-            },
-            body: JSON.stringify(user_obj),
-          })
-        if (registerUser.ok) {
-          alert("Signup Successfull");
-          setuFname("");
-          setuLname("");
-          setuEmail("");
-          setUphone("");
-          setuPassword("");
-
-          sessionStorage.setItem("userLoggedIn", JSON.stringify(checkIfUserExists));
-          navigate("/login");
-        } else {
-          alert("There was a problem with the Signup");
-        }
+        let user_obj = {
+          first_name: uFname,
+          last_name: uLname,
+          email: uEmail,
+          phone: uPhone,
+          password: uPassword,
+        };
+        const res = await fetch("http://property.reworkstaging.name.ng/v1/users", {
+          method: "Post",
+          headers: {
+            "content-type": "application/JSON"
+          },
+          body: JSON.stringify(user_obj)
+        });
+        const users = await res.json();
+        console.log(users)
+        navigate("/login")
       }
+    } catch (error) {
+      console.log(error);
     }
+
   };
 
   return (

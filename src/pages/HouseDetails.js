@@ -11,7 +11,8 @@ import { CgProfile } from "react-icons/cg";
 import { MdOutlineAttachEmail } from "react-icons/md";
 import { IoCallOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import React, { useState } from "react"
+import { useState, useContext } from "react"
+import { GlobalContext } from "../context/context";
 import { Pagination, A11y, Autoplay, EffectFade } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -22,57 +23,70 @@ import Footer from "../components/Footer";
 
 function HouseDetails() {
   const navigate = useNavigate()
+  const { currentUser } = useContext(GlobalContext)
   const [uDate, setDate] = useState("")
   const [uTime, setUtime] = useState("")
   const [uMessage, setUmessage] = useState("")
   const [checkValue, setCheckValue] = useState(false);
   const [toggle, setToggle] = useState(false)
-  const loggedInUser = JSON.parse(sessionStorage.getItem("User"));
+  const loggedinuser = JSON.parse(localStorage.getItem("loggedinuser"));
   const today = new Date()
   const todayDate = today.getTime()
 
   const sendBooking = async (e) => {
     e.preventDefault();
-    if (loggedInUser === null) {
-      alert("Please Login to your account to Book an appointment");
-      navigate("/login")
-    } else if (uMessage === "" || uTime === "") {
-      setCheckValue(true);
-    }
-    else {
-      const userDate = new Date(uDate).getTime()
-      // console.log(userDate)
 
-      if (todayDate <= userDate) {
-        let post_obj = {
-          property_id: loggedInUser.id,
-          user_id: loggedInUser.id,
-          date: uDate,
-          msg: uMessage,
-          time: uTime,
-        }
-        const resp = await fetch("http://property.reworkstaging.name.ng/v1/appointments", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(post_obj),
-        });
-        if (resp.ok) {
-          alert("Appointment Created Successfully");
-          setDate("");
-          setUtime("");
-          setUmessage("");
+    try {
+      if (loggedinuser === null) {
+        alert("Please Login to your account to Book an appointment");
+        navigate("/login")
+      }
+      else {
+        if (uMessage === "" || uTime === "") {
+          return setCheckValue(true);
         } else {
-          alert("There was a probem creating appointment!");
+          const userDate = new Date(uDate).getTime()
+          if (todayDate <= userDate) {
+            let post_obj = {
+              property_id: currentUser?.data?.id,
+              user_id: currentUser?.data?.id,
+              date: uDate,
+              msg: uMessage,
+              time: uTime,
+            }
+            const res = await fetch("http://property.reworkstaging.name.ng/v1/appointments", {
+              method: "POST",
+              headers: {
+                "content-type": "application/JSON",
+                "Authorization": `Bearer ${currentUser?.data?.token}`
+              },
+              body: JSON.stringify(post_obj)
+            });
+            const data = await res.json()
+            console.log(data)
+
+            if (res.ok) {
+              alert("Appointment Created Successfully");
+              setDate("");
+              setUtime("");
+              setUmessage("");
+            } else {
+              alert("There was a probem creating appointment!");
+            }
+          } else {
+            alert("Appointment Date is past, select a future date")
+          };
         }
-      } else {
-        alert("Appointment Date is past, select a future date")
-      };
+        return;
+      }
+    } catch (error) {
+      console.log(error)
     }
   };
 
   return (
     <div className="prop-cont">
-      <Navigation/>
+      <Navigation />
       <div className="singlePTxt">
         <h1 className="hd">Properties Single</h1>
         <p className="lux">Luxurious home</p>
@@ -223,7 +237,7 @@ function HouseDetails() {
             </div>
           </div>
         </div>
-        
+
         <div className="propRight">
           <div className="wsh-con">
             <div className="acc">
@@ -287,7 +301,7 @@ function HouseDetails() {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

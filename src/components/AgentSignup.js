@@ -1,9 +1,11 @@
 import Button from "./Button";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { GlobalContext } from "../context/context";
 
 function AgentSignup() {
   const navigate = useNavigate();
+  const {currentUser} = useContext(GlobalContext)
   const [uFname, setuFname] = useState("");
   const [uLname, setuLname] = useState("");
   const [uCompany, setuCompany] = useState("");
@@ -14,51 +16,31 @@ function AgentSignup() {
 
   const submitForm = async (e) => {
     e.preventDefault();
-    if (uFname === "" || uLname === "" || uCompany === "" || uEmail === "" || uPhone === "" || uPassword === "") {
-      setCheckValue(true);
-    } else {
-      let user_obj = {
+    console.log(currentUser?.data?.token)
+    try {
+      if (uFname === "" || uLname === "" || uCompany === "" || uEmail === "" || uPhone === "" || uPassword === "") {
+        return setCheckValue(true);
+      } 
+      let agent_obj = {
         full_name: uFname + " " + uLname,
         company: uCompany,
         email: uEmail,
         phone: uPhone,
         password: uPassword,
-      };
-      const resp = await fetch("http://property.reworkstaging.name.ng/v1/users");
-      const users = await resp.json();
-      console.log(users)
-
-      const checkIfUserExists = users.find((user_obj) => user_obj.email === uEmail);
-      if (checkIfUserExists !== undefined) {
-        alert("Email already Registered, Login into your account with your email");
-      } else {
-        const registerUser = await fetch("http://property.reworkstaging.name.ng/v1/users",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "authorization": "bearer <token>"
-            },
-            body: JSON.stringify(user_obj),
-          }).then(res => res.json())
-          .then(res => {
-            console.log(res)
-          })
-        if (registerUser.ok) {
-          alert("Signup Successfull");
-          setuFname("");
-          setuLname("");
-          setuCompany("");
-          setuEmail("");
-          setUphone("");
-          setuPassword("");
-
-          sessionStorage.setItem("userLoggedIn", JSON.stringify(checkIfUserExists));
-          navigate("/login");
-        } else {
-          alert("There was a problem with the Signup");
-        }
       }
+      const res = await fetch ("http://property.reworkstaging.name.ng/v1/agents",{
+        method: "POST",
+        headers:{
+          "content-type": "application/JSON",
+          "Authorization": `Bearer ${currentUser?.data?.token}`
+        },
+        body: JSON.stringify(agent_obj)
+      })
+      const data = await res.json()
+      console.log(data)
+      navigate("/login")
+    } catch (error) {
+      console.log(error)
     }
   };
 

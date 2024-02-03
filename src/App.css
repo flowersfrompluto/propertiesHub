@@ -371,8 +371,9 @@ input[type=number] {
   background-image: url("./images/living-room-1835923_1920.jpg");
   background-size: cover;
   background-position: center;
-  padding: 80px 0px 50px 0px;
+  padding: 0px 0px 50px 0px;
   display: flex;
+  height: 100vmin;
   justify-content: center;
   align-items: center;
 }
@@ -407,25 +408,11 @@ input[type=number] {
   color: #140c40;
 }
 
-.form-group span{
+.form-group span,
+.app-group span{
   font-size: 12px;
   color: #ff0000;
 }
-
-.b-one {
-  height: 50px;
-  width: 100%;
-  margin-top: 10px;
-  padding: 0 10px;
-}
-
-.b-two {
-  height: 50px;
-  width: 100%;
-  margin-top: 10px;
-  padding: 0 10px;
-}
-
 
 .checkbox-group {
   display: flex;
@@ -537,6 +524,7 @@ input[type=number] {
   outline-style: none;
   border-radius: 5px;
   border: 1px solid gainsboro;
+  padding: 0px 10px;
 }
 
 .checkbox-group {
