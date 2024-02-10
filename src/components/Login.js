@@ -1,7 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState } from "react";
+// import { useContext } from "react";
 import React from 'react';
-import { GlobalContext } from "../context/context";
+// import { GlobalContext } from "../context/context";
 import Button from "./Button";
 import Footer from "./Footer";;
 
@@ -11,7 +12,7 @@ function Login() {
   const [uEmail, setUemail] = useState("");
   const [uPassword, setUpassword] = useState("");
   const [checkValue, setCheckValue] = useState(false);
-  const {currentUser} = useContext(GlobalContext)
+  // const {currentUser} = useContext(GlobalContext)
 
   const submitForm = async (e) => {
     e.preventDefault();

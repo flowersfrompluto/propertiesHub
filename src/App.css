@@ -226,7 +226,6 @@ input[type=number] {
 }
 
 .homeRow2 {
-  /* padding: 50px 0px; */
   background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0.6)), url(./images/pexels-damien-daye-2381872.jpg);
   background-repeat: no-repeat;
   background-position: center;
@@ -241,7 +240,6 @@ input[type=number] {
 
 .homeRow2box {
   width: 70%;
-  /* background-color: #4e4e4e67; */
   padding: 20px 0px;
 }
 
@@ -250,7 +248,6 @@ input[type=number] {
   background-color: #00AEFF;
   text-align: center;
   width: 500px;
-  /* height: 200px; */
 }
 
 .homeRow2text h1 {
@@ -465,7 +462,7 @@ input[type=number] {
   position: sticky;
   top: 120px;
   padding: 20px 15px;
-  height: 250px;
+  height: 300px;
   background-color: #ffffff82;
 }
 
@@ -566,7 +563,6 @@ input[type=number] {
 }
 
 .singlePTxt {
-  /* margin-left: 35px; */
   text-align: center;
 }
 

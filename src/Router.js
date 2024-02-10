@@ -25,6 +25,7 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import UserSignup from "./components/UserSignup";
 import AgentSignup from "./components/AgentSignup";
+import MerchantSignup from "./components/MerchantSignup";
 import Account from "./pages/Account";
 
 // export default function Router() {
@@ -98,6 +99,7 @@ export default function Router() {
           <Route path="/signup" element={<Navigate replace to="useraccount" />}/>
           <Route path="useraccount" element={<UserSignup />} />
           <Route path="agentaccount" element={<AgentSignup />} />
+          <Route path="admin" element={<MerchantSignup />} />
         </Route>
         
           <Route path="admin-agent" element={<AgentLayout />}>

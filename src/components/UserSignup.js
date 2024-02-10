@@ -33,6 +33,7 @@ function UserSignup() {
         });
         const users = await res.json();
         console.log(users)
+        alert("Account Created Successful")
         navigate("/login")
       }
     } catch (error) {

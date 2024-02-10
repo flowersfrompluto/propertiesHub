@@ -512,16 +512,17 @@ select {
   padding: 10px;
   background: var(--grey-color);
   border-radius: 5px;
-  border: 2px solid transparent;
-  outline: 2px solid transparent;
+  background-color: transparent;
+  border: 1px solid gainsboro;
   font-size: 0.98rem;
   font-weight: 500;
-  /* resize: none; */
+  resize: none;
+  outline-style: none;
 }
 
-.new-property-form-item input:focus {
+/* .new-property-form-item input:focus {
   border: 0.198rem solid #808080;
-}
+} */
 
 .single-property-page-container {
   margin-top: 2rem;
@@ -666,11 +667,13 @@ select {
   margin-top: 20px;
 }
 
-
-
-
 iframe {
   width: 100%;
   height: 500px;
   border: 1px solid transparent;
+}
+
+.new-property-form span{
+  font-size: 12px;
+  color: #ff0000;
 }

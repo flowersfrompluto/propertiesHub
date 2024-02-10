@@ -38,6 +38,7 @@ function AgentSignup() {
       })
       const data = await res.json()
       console.log(data)
+      alert("Account Created Successful")
       navigate("/login")
     } catch (error) {
       console.log(error)
